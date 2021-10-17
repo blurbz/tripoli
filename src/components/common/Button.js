@@ -1,3 +1,6 @@
+/**
+ * Returns the button.
+ */
 function Button({ children, className, onClick }) {
   return (
     <button

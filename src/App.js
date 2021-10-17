@@ -13,7 +13,9 @@ import RotateLoader from "react-spinners/RotateLoader";
 
 const Login = lazy(() => import("./pages/Login"));
 const SignUp = lazy(() => import("./pages/Signup"));
-
+/**
+ * This element is shown when the router is lazy-loading compontents.
+ */
 function FallbackLoading() {
   return (
     <div className="flex m-24">
@@ -23,7 +25,9 @@ function FallbackLoading() {
     </div>
   );
 }
-
+/**
+ * This component contains router routes.
+ */
 function AppRoutes() {
   return (
     <Suspense fallback={<FallbackLoading />}>

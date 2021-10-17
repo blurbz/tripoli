@@ -1,3 +1,4 @@
+/** This function returns a styled input. */
 function TextInput({ type, value, placeholder, onChange }) {
   return (
     <input
