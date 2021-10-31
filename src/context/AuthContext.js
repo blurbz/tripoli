@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Cookies from "js-cookie";
+import { Cookies } from "js-cookie";
 
 const AuthContext = createContext();
 const { Provider } = AuthContext;
