@@ -57,7 +57,7 @@ function Book() {
 
         setReviewSubmissionSuccess(data?.message);
         setReviewSubmissionError("");
-        setTimeout(() => {}, 1500);
+        setTimeout(() => { }, 1500);
       } catch (error) {
         setReviewSubmissionLoading(false);
         // const { data } = error?.response;
@@ -76,20 +76,15 @@ function Book() {
           {reviewSubmissionSuccess && (
             <Redirect to={window.location.pathname} />
           )}
-          <div className="bg-gray-200 mx-24 rounded-sm shadow-md">
-            <div className="flex">
-              <div className="m-10">
-                <img
-                  width={200}
-                  height={400}
-                  src={book?.volumeInfo?.imageLinks?.thumbnail}
-                  alt={book?.volumeInfo?.title}
-                  className="rounded-md mx-5"
-                />
+          <div class="max-w-md mx-auto bg-gray-200 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+            <div class="sm:flex">
+              <div class="sm:flex-shrink-0">
+                <img className="h-48 w-full object-cover sm:h-full sm:w-48" src={book?.volumeInfo?.imageLinks?.thumbnail}
+                  alt={book?.volumeInfo?.title} />
               </div>
-              <div className="m-10 relative">
-                <h1 className="text-2xl">{book?.volumeInfo?.title}</h1>
-                <h2 className="text-lg my-3">{book?.volumeInfo?.subtitle}</h2>
+              <div class="p-8">
+                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{book?.volumeInfo?.title}</div>
+                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{book?.volumeInfo?.subtitle}</a>
                 <p
                   className="text-md my-3"
                   dangerouslySetInnerHTML={{
@@ -138,7 +133,7 @@ function Book() {
                 <a
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-sm bg-blue-600 text-white text-xl mx-auto shadow-md px-5 py-2 hover:bg-blue-700 hover:shadow-xl transition-all absolute bottom-0 left-0 select-none"
+                  className="rounded-sm bg-blue-600 text-white text-xl mx-auto shadow-md px-5 py-2 hover:bg-blue-700 hover:shadow-xl transition-all bottom-0 left-0 select-none"
                   href={book?.volumeInfo?.previewLink}
                 >
                   Read online
@@ -147,7 +142,7 @@ function Book() {
             </div>
           </div>
           <div className="mt-4">
-            <div className="mx-96 bg-gray-200 rounded-md shadow-sm">
+            <div className="md:mx-96 bg-gray-200 rounded-md shadow-sm">
               <h1 className="text-2xl text-center font-medium p-4">
                 Write your own review
               </h1>
