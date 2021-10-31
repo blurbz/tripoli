@@ -33,48 +33,41 @@ function Search() {
       <h1 className="text-3xl text-center">
         Results for <em>{query}</em>
       </h1>
-      <div className="p-24">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 p-10">
         {!isLoading ? (
           results
             .sort((a, b) =>
               a?.volumeInfo.hasOwnProperty("subtitle")
                 ? -1
                 : b?.volumeInfo.hasOwnProperty("subtitle")
-                ? 1
-                : 0
+                  ? 1
+                  : 0
             )
             .sort((a, b) =>
               a?.volumeInfo.hasOwnProperty("description")
                 ? -1
                 : b?.volumeInfo.hasOwnProperty("description")
-                ? 1
-                : 0
+                  ? 1
+                  : 0
             )
             .map((result) => {
               return (
-                <div className="m-4 bg-gray-200 rounded-md p-4">
-                  <div className="flex gap-8">
-                    <div className="flex-shrink-0">
-                      <img
-                        src={
-                          result?.volumeInfo?.imageLinks?.smallThumbnail ||
-                          "https://via.placeholder.com/130x200"
-                        }
-                        alt={result.volumeInfo.title}
-                        width="130"
-                        height="200"
-                        className="rounded-lg"
-                      />
+                <div class="max-w-md mx-auto bg-gray-200 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+                  <div class="sm:flex">
+                    <div class="sm:flex-shrink-0">
+                      <img className="h-48 w-full object-cover sm:h-full sm:w-48" src={
+                        result?.volumeInfo?.imageLinks?.smallThumbnail ||
+                        "https://via.placeholder.com/130x200"
+                      }
+                        alt={result.volumeInfo.title} />
                     </div>
-                    <div className="relative">
-                      <h1 className="text-3xl mb-2">
-                        {result.volumeInfo.title
-                          .split(/\s+/)
-                          .slice(0, 10)
-                          .join(" ")}
-                      </h1>
-                      <h3 className="py-2">{result.volumeInfo.subtitle}</h3>
-                      <p className="text-md mb-5">
+                    <div class="p-8">
+                      <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{result.volumeInfo.title
+                        .split(/\s+/)
+                        .slice(0, 10)
+                        .join(" ")}</div>
+                      <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{result.volumeInfo.subtitle}</a>
+                      <p className="text-md mt-2 mb-8">
                         {/* Author */}
                         Author:{" "}
                         <strong>
@@ -98,10 +91,9 @@ function Search() {
                         </strong>
                         <br />
                       </p>
-                      <br />
                       <Link
                         to={"/book/" + encodeURIComponent(result?.id)}
-                        className="rounded-sm bg-blue-600 text-white text-xl mx-auto shadow-md px-5 py-2 hover:bg-blue-700 hover:shadow-xl transition-all absolute bottom-0 left-0"
+                        className="rounded-sm bg-blue-600 text-white text-xl mx-auto shadow-md px-5 py-2 hover:bg-blue-700 hover:shadow-xl transition-all "
                       >
                         Select
                       </Link>
@@ -111,8 +103,8 @@ function Search() {
               );
             })
         ) : (
-          <div className="flex m-24">
-            <div className="mx-auto">
+          <div className="flex m-24 items-center">
+            <div className="">
               <RotateLoader loading={true} color={"#2563eb"} />
             </div>
           </div>
